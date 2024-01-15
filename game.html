@@ -12,6 +12,7 @@
     <div class='container'>
         <h1>jeu de mémoire</h1>
         <div class='game'></div>
+        <div class='level'  style="font-size: 20px;">Niveau : <span id='currentLevel'>1</span></div>
         <button class='reset' onclick='window.location.reload()'>reinitialiser</button>
         <button class='next reset' onclick='nextLevel()'>niveau suivant</button>
     </div>
@@ -99,12 +100,16 @@ function nextLevel() {
 
     currentLevel++;
     if (currentLevel < niveaux.length) {
+        // Mettez à jour le niveau actuel affiché
+        document.getElementById('currentLevel').textContent = currentLevel + 1;
+        
         initializeGame();
     } else {
         alert('Félicitations ! Vous avez terminé tous les niveaux.');
         // Réinitialisez ou effectuez d'autres actions après avoir terminé tous les niveaux
     }
 }
+
 
 // Initialisation du jeu au chargement de la page
 initializeGame();
