@@ -10,7 +10,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: teal;
+    background: #9333ea;
 }
 
 .container{
@@ -20,7 +20,7 @@ body{
     align-items: center;
     flex-direction: column;
     gap: 30px;
-    background: rgb(22, 107, 107);
+    background: #c7d2fe;
     padding: 40px 60px;
 
 }
@@ -34,7 +34,7 @@ h2{
 
 .reset{
     padding: 15px 20px;
-    color: teal;
+    color: #4c1d95;
     background: #fff;
     border: none;
     font-size: 1.5em;
