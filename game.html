@@ -10,10 +10,10 @@
 
 <body>
     <div class='container'>
-        <h1>Memory Game</h1>
+        <h1>jeu de mémoire</h1>
         <div class='game'></div>
-        <button class='reset' onclick='window.location.reload()'>Reset</button>
-        <button class='next reset' onclick='nextLevel()'>Next Level</button>
+        <button class='reset' onclick='window.location.reload()'>reinitialiser</button>
+        <button class='next reset' onclick='nextLevel()'>niveau suivant</button>
     </div>
 
     <script>
@@ -53,7 +53,7 @@
     // Ajoutez autant de niveaux que vous le souhaitez
 ];
 
-let currentLevel = 0; // Commence à zéro, car les indices des tableaux commencent à zéro
+let currentLevel = 0;
 
 function initializeGame() {
     document.querySelector('.game').innerHTML = '';
@@ -74,8 +74,10 @@ function initializeGame() {
                         document.querySelectorAll('.boxOpen')[1].classList.add('boxMatch');
                         document.querySelectorAll('.boxOpen').forEach(box => box.classList.remove('boxOpen'));
                         if (document.querySelectorAll('.boxMatch').length == emojiNiveau.length) {
-                            alert('Vous avez gagné ! Passage au niveau suivant.');
-                            nextLevel();
+                            alert('Vous avez gagné !');
+
+                            // Affiche le bouton "Niveau suivant" après avoir gagné
+                            document.querySelector('.next').style.display = 'block';
                         }
                     } else {
                         document.querySelectorAll('.boxOpen').forEach(box => box.classList.remove('boxOpen'));
@@ -86,15 +88,21 @@ function initializeGame() {
 
         document.querySelector('.game').appendChild(box);
     }
+
+    // Masque le bouton "Niveau suivant" au début de chaque niveau
+    document.querySelector('.next').style.display = 'none';
 }
 
 function nextLevel() {
+    // Masque le bouton "Niveau suivant" avant de passer au niveau suivant
+    document.querySelector('.next').style.display = 'none';
+
     currentLevel++;
     if (currentLevel < niveaux.length) {
         initializeGame();
     } else {
         alert('Félicitations ! Vous avez terminé tous les niveaux.');
-        // Peut-être réinitialiser ou effectuer d'autres actions après avoir terminé tous les niveaux
+        // Réinitialisez ou effectuez d'autres actions après avoir terminé tous les niveaux
     }
 }
 
