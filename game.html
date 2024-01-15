@@ -10,26 +10,27 @@
 
 <body>
     <div class='container'>
+        <button class='reset' onclick='window.location.reload()'>recommencer</button>
         <h1>jeu de mémoire</h1>
-        <div class='game'></div>
-        <div class='level'  style="font-size: 20px;">Niveau : <span id='currentLevel'>1</span></div>
-        <button class='reset' onclick='window.location.reload()'>reinitialiser</button>
         <button class='next reset' onclick='nextLevel()'>niveau suivant</button>
+        <div class='level l'>Niveau : <span id='currentLevel'>1</span></div>
+        <div class='game'></div>
     </div>
 
     <script>
        const niveaux = [
     {
         niveau: 1,
-        image: ["😀", "😃", "😄", "😁", "🐵", "🦅", "🦆", "🦢", "😀", "😃", "😄", "😁", "🐵", "🦅", "🦆", "🦢"]
-    },
-    {
-        niveau: 2,
         image: ["🥉", "⚽","⚾","🥎", "🏀", "🏐","🏈", "🏉","🥉", "⚽",  "⚾","🥎","🏀","🏐","🏈","🏉"]
     },
     {
+        niveau: 2,
+        image: ["😀", "😃", "😄", "😁", "🐵", "🦅", "🦆", "🦢", "😀", "😃", "😄", "😁", "🐵", "🦅", "🦆", "🦢","🎲", "🛩️", "🍟", "🐳","🎲", "🛩️", "🍟", "🐳"]
+
+    },
+    {
         niveau: 3,
-        image: ["🌸", "🍎", "🚗", "🎈", "🎨", "🚀", "🍕", "🐢", "🌸", "🍎", "🚗", "🎈", "🎨", "🚀", "🍕", "🐢"]
+        image: ["🌸", "🍎", "🚗", "🎈", "🎨", "🚀", "🍕", "🐢", "🌸", "🍎", "🚗", "🎈", "🎨", "🚀", "🍕", "🐢", "🚢", "🌞", "🍋", "🍭","🚢", "🌞", "🍋", "🍭"]
     },
     {
         niveau: 4,

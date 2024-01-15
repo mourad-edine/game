@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: monospace;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@ body{
     background: #9333ea;
 }
 
-.container{
+.container {
     position: relative;
     display: flex;
     justify-content: center;
@@ -21,19 +21,20 @@ body{
     flex-direction: column;
     gap: 30px;
     background: #c7d2fe;
-    padding: 40px 60px;
-
+    padding: 40px 20px; /* Réduire l'espacement pour les petits écrans */
 }
-h2{
+.l{
+    font-size: 20px;
+}
+h2 {
     font-size: 3em;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-
 }
 
-.reset{
-    padding: 15px 20px;
+.reset {
+    padding: 12px 20px;
     color: #4c1d95;
     background: #fff;
     border: none;
@@ -43,12 +44,16 @@ h2{
     cursor: pointer;
     font-weight: 600;
 }
-.reset:focus{
+
+.reset:focus {
     color: #fff;
     background: rgb(91, 63, 63);
-}   
-.game{
-    width: 440px;
+}
+
+.game {
+    padding-left: 20px;
+    width: 100%; /* Utiliser la largeur complète de l'écran */
+    max-width: 700px; /* Limiter la largeur pour éviter d'étirer le contenu */
     height: 440px;
     display: flex;
     flex-wrap: wrap;
@@ -56,7 +61,8 @@ h2{
     transform-style: preserve-3d;
     perspective: 500px;
 }
-.item{
+
+.item {
     position: relative;
     width: 100px;
     height: 100px;
@@ -68,10 +74,12 @@ h2{
     transition: 0.25s;
     transform: rotateY(180deg);
 }
-.item.boxOpen{
+
+.item.boxOpen {
     transform: rotateY(0deg);
 }
-.item::after{
+
+.item::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -79,10 +87,19 @@ h2{
     transition: 0.25s;
     transform: rotateY(0deg);
     backface-visibility: hidden;
-
 }
 
 .boxOpen:after,
-.boxMatch:after{
+.boxMatch:after {
     transform: rotateY(180deg);
+}
+
+/* Media query pour les écrans plus petits (téléphones) */
+@media screen and (max-width: 600px) {
+    .game {
+        padding-left: 0;
+        margin-left: 40px;
+        height: 1500px;
+    }
+    
 }
