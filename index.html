@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="introduction.css">
+    <title>Introduction</title>
+</head>
+
+<body>
+    <div class='container'>
+        <h1>Bienvenue dans le jeu de mémoire!</h1>
+        <p>Appuyez sur le bouton ci-dessous pour commencer.</p>
+        <button class='start-button' onclick='startGame()'>Commencer le jeu</button>
+    </div>
+
+    <script>
+        function startGame() {
+            // Redirigez l'utilisateur vers la page du jeu
+            window.location.href = 'load.html';
+        }
+    </script>
+</body>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: teal;
+}
+
+.container {
+    text-align: center;
+    background: rgb(22, 107, 107);
+    padding: 40px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.start-button {
+    padding: 15px 20px;
+    color: teal;
+    background: #fff;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.start-button:focus {
+    color: #fff;
+    background: rgb(91, 63, 63);
+}
+
+</style>
+</html>

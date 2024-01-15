@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>jeux de mémoire</title>
+</head>
+
+<body>
+    <div class='container'>
+        <h1>Memory Game</h1>
+        <div class='game'></div>
+        <button class='reset' onclick='window.location.reload()'>Reset</button>
+        <button class='next reset' onclick='nextLevel()'>Next Level</button>
+    </div>
+
+    <script>
+       const niveaux = [
+    {
+        niveau: 1,
+        image: ["😀", "😃", "😄", "😁", "🐵", "🦅", "🦆", "🦢", "😀", "😃", "😄", "😁", "🐵", "🦅", "🦆", "🦢"]
+    },
+    {
+        niveau: 2,
+        image: ["🥉", "⚽","⚾","🥎", "🏀", "🏐","🏈", "🏉","🥉", "⚽",  "⚾","🥎","🏀","🏐","🏈","🏉"]
+    },
+    {
+        niveau: 3,
+        image: ["🌸", "🍎", "🚗", "🎈", "🎨", "🚀", "🍕", "🐢", "🌸", "🍎", "🚗", "🎈", "🎨", "🚀", "🍕", "🐢"]
+    },
+    {
+        niveau: 4,
+        image: ["🎸", "🍦", "🐘", "🎯", "🚢", "🌞", "🍋", "🍭", "🎸", "🍦", "🐘", "🎯", "🚢", "🌞", "🍋", "🍭"]
+    },
+    {
+        niveau: 5,
+        image: ["🎹", "🏖️", "🚴", "🍌", "🎭", "🚁", "🍇", "🌈", "🎹", "🏖️", "🚴", "🍌", "🎭", "🚁", "🍇", "🌈"]
+    },
+    {
+        niveau: 6,
+        image: ["🌻", "🍔", "🚗", "🎪", "🎲", "🛩️", "🍟", "🐳", "🌻", "🍔", "🚗", "🎪", "🎲", "🛩️", "🍟", "🐳"]
+    },
+    {
+        niveau: 7,
+        image: ["🚄", "🏟️", "🚤", "🍰", "🎸", "🚁", "🍣", "🚀", "🚄", "🏟️", "🚤", "🍰", "🎸", "🚁", "🍣", "🚀"]
+    },
+    {
+        niveau: 8,
+        image: ["🎮", "🏰", "🚁", "🍦", "🎬", "🚂", "🍩", "🍬", "🎮", "🏰", "🚁", "🍦", "🎬", "🚂", "🍩", "🍬"]
+    }
+    // Ajoutez autant de niveaux que vous le souhaitez
+];
+
+let currentLevel = 0; // Commence à zéro, car les indices des tableaux commencent à zéro
+
+function initializeGame() {
+    document.querySelector('.game').innerHTML = '';
+    const emojiNiveau = niveaux[currentLevel].image;
+    const shuffledEmoji = emojiNiveau.sort(() => Math.random() - 0.5);
+
+    for (let i = 0; i < shuffledEmoji.length; i++) {
+        let box = document.createElement('div');
+        box.className = 'item';
+        box.innerHTML = shuffledEmoji[i];
+
+        box.onclick = function () {
+            this.classList.add('boxOpen');
+            setTimeout(() => {
+                if (document.querySelectorAll('.boxOpen').length > 1) {
+                    if (document.querySelectorAll('.boxOpen')[0].innerHTML == document.querySelectorAll('.boxOpen')[1].innerHTML) {
+                        document.querySelectorAll('.boxOpen')[0].classList.add('boxMatch');
+                        document.querySelectorAll('.boxOpen')[1].classList.add('boxMatch');
+                        document.querySelectorAll('.boxOpen').forEach(box => box.classList.remove('boxOpen'));
+                        if (document.querySelectorAll('.boxMatch').length == emojiNiveau.length) {
+                            alert('Vous avez gagné ! Passage au niveau suivant.');
+                            nextLevel();
+                        }
+                    } else {
+                        document.querySelectorAll('.boxOpen').forEach(box => box.classList.remove('boxOpen'));
+                    }
+                }
+            }, 500);
+        };
+
+        document.querySelector('.game').appendChild(box);
+    }
+}
+
+function nextLevel() {
+    currentLevel++;
+    if (currentLevel < niveaux.length) {
+        initializeGame();
+    } else {
+        alert('Félicitations ! Vous avez terminé tous les niveaux.');
+        // Peut-être réinitialiser ou effectuer d'autres actions après avoir terminé tous les niveaux
+    }
+}
+
+// Initialisation du jeu au chargement de la page
+initializeGame();
+
+    </script>
+</body>
+
+</html>
